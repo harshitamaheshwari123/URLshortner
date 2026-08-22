@@ -22,12 +22,6 @@ Frontend deploys to Vercel, backend deploys to Render.
 - Google Safe Browsing check on link creation (active only if you supply an API key)
 
 ## What's explicitly deferred (scope cut, not forgotten)
-
-Note: password reset ("forgot password" email flow) was intentionally
-removed after being partially built — email verification via Supabase Auth
-still works for signup, but there is no self-service password reset. Users
-who forget their password currently have no in-app way to recover access.
-
 This is a full product-scale PRD; building every line item wasn't realistic for
 one build pass. These are left out on purpose, in order of what I'd add next:
 
