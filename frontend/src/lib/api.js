@@ -35,6 +35,8 @@ export const api = {
   bulkArchive: (ids, archived = true) =>
     request('/api/links/bulk-archive', { method: 'POST', body: JSON.stringify({ ids, archived }) }),
   getAnalytics: (linkId) => request(`/api/analytics/${linkId}`),
+  suggestMetadata: (destination_url) =>
+    request('/api/ai/suggest-metadata', { method: 'POST', body: JSON.stringify({ destination_url }) }),
   qrCodeUrl: async (linkId) => {
     const headers = await authHeader();
 

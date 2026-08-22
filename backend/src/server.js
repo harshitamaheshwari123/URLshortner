@@ -6,6 +6,7 @@ import rateLimit from 'express-rate-limit';
 import linksRouter from './routes/links.js';
 import redirectRouter from './routes/redirect.js';
 import analyticsRouter from './routes/analytics.js';
+import aiRouter from './routes/ai.js';
 
 dotenv.config();
 
@@ -28,6 +29,7 @@ app.get('/api/health', (_req, res) => res.json({ status: 'ok' }));
 
 app.use('/api/links', linksRouter);
 app.use('/api/analytics', analyticsRouter);
+app.use('/api/ai', aiRouter);
 
 app.use('/', redirectRouter);
 

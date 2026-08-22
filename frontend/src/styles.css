@@ -117,6 +117,8 @@ h3 { font-size: 1.2rem; font-weight: 600; margin: 0 0 1.25rem; color: var(--colo
 .error { color: var(--color-danger); font-size: 0.95rem; background: #fef2f2; padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border: 1px solid #fecaca; }
 .success { color: var(--color-success); font-size: 0.95rem; background: #ecfdf5; padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border: 1px solid #a7f3d0; }
 .hint { color: var(--color-text-muted); font-size: 1rem; margin-top: -0.75rem; margin-bottom: 1.5rem; }
+.ai-suggest-row { display: flex; align-items: center; gap: 0.5rem; margin-top: -0.5rem; }
+.ai-suggest-row .hint { margin: 0; font-size: 0.85rem; }
 
 .toolbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.25rem; margin-bottom: 2.5rem; }
 .toolbar-actions { display: flex; gap: 0.85rem; align-items: center; flex-wrap: wrap; }

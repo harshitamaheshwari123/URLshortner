@@ -13,7 +13,27 @@ export default function CreateLink() {
   const [result, setResult] = useState(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiError, setAiError] = useState('');
   const navigate = useNavigate();
+
+  async function handleAiSuggest() {
+    if (!url) {
+      setAiError('Enter a destination URL first');
+      return;
+    }
+    setAiError('');
+    setAiLoading(true);
+    try {
+      const suggestion = await api.suggestMetadata(url);
+      if (suggestion.alias) setAlias(suggestion.alias);
+      if (suggestion.tags?.length) setTags(suggestion.tags.join(', '));
+    } catch (e) {
+      setAiError(e.message);
+    } finally {
+      setAiLoading(false);
+    }
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -63,6 +83,12 @@ export default function CreateLink() {
         </label>
         {user && (
           <>
+            <div className="ai-suggest-row">
+              <button type="button" className="link-button" onClick={handleAiSuggest} disabled={aiLoading}>
+                {aiLoading ? 'Asking AI...' : '✨ AI Suggest alias + tags'}
+              </button>
+              {aiError && <span className="hint"> {aiError}</span>}
+            </div>
             <label>Custom alias (optional)
               <input placeholder="my-sale" value={alias} onChange={(e) => setAlias(e.target.value)} minLength={3} maxLength={30} />
             </label>
